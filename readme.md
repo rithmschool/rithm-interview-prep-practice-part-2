@@ -4,7 +4,7 @@ Congratulations on making it past the timed coding challenge! It's time to pract
 
 To best prepare for the final stage of the Rithm School interview, make sure that you can solve each of these functions. You can also download a zip file with all of these functions and an HTML file that you can open to run automated tests to ensure you have solved the problem correctly.
 
-[Download a zip file containing tests and practice problems here](https://github.com/rithmschool/rithm-interview-prep-practice-part-2/archive/master.zip)
+[Download a zip file containing tests and practice problems here](https://github.com/rithmschool/rithm-interview-prep-practice-part-2/archive/refs/heads/main.zip)
 
 ### Running the tests for each practice problem
 
@@ -252,7 +252,7 @@ let matrix = [
 ];
 inMatrix(matrix, 5) // true
 inMatrix(matrix, 8) // true
-inMatrix(matrix, 10) // false
+inMatrix(matrix, 10) // **false**
 ```
 
 ### replaceAfter
