@@ -1,6 +1,8 @@
 describe("skipVowels", function () {
   it("skips vowels", function(){
-    expect(skipVowels("hello")).toEqual(["h"]);
+    expect(skipVowels("hello")).toEqual(["h", "l"])
+    expect(skipVowels("much fun")).toEqual(["m", "h", " ", "f"])
+    expect(skipVowels("aaaa")).toEqual([])
   })
 });
 
@@ -13,6 +15,13 @@ describe("separateLanguages", function () {
       javascript: 1,
       other: ["c++"],
     });
+
+    expect(separateLanguages(["greek", "french", "yoruba", "python"])).toEqual({
+      python: 1,
+      javascript: 0,
+      other: ["greek", "french", "yoruba"],
+    })
+
   })
   it("should return an object with the following keys, 'python', 'javascript', 'other'", function () {
     expect(
@@ -100,15 +109,23 @@ describe("robotInstructions", function () {
 
 describe("reverseValues", function(){
   it("reverses values", function(){
-    expect(reverseValues([1, 1, 3, 3, 2])).toEqual([1, 1]);
+    expect(reverseValues([1, 1, 3, 3, 2])).toEqual([1, 1])
+    expect(reverseValues([1, 3, 5, 7])).toEqual([7, 5, 3, 1])
+    expect(reverseValues([1, 3, 4, 7])).toEqual([7])
+    expect(reverseValues([11, 13, 15, 20, 1, 1])).toEqual([1, 1, 11])
+    expect(reverseValues([4, 5, 1, 1, 2, 1, 1])).toEqual([1, 1, 5])
+    expect(reverseValues([2, 2, 2])).toEqual([])
   })
 })
 
 describe("replaceAfter", function () {
   it("should replace the two elements after the index with the strings 'Hello', 'world'", function () {
     expect(
-      replaceAfter(["Hello", "world", "Hello", "world", "Hello", "world"], 2)
-    ).toEqual(["Hello", "world", "Hello", "world", "Hello", "world"]);
+      replaceAfter(["1", "2", "a", "b", "3", "4"], 2)
+    ).toEqual(["1", "2", "Hello", "world", "3", "4"]);
+
+    expect(replaceAfter(["a", "b", "c"], 0)).toEqual(["Hello", "world", "c"])
+
   });
 });
 
@@ -134,41 +151,28 @@ describe("inMatrix", function () {
 describe("countIfHasValue", function () {
   it("should return the number of times the value is found in any of the arrays", function () {
     const obj = {
-      a: [1, 2, 3],
-      b: [4, 5, 6],
-      c: [7, 8, 9],
-      d: [10, 11, 12]
+      a: [1, 10, 3],
+      b: [4, 1, 7],
+      c: [7, 7, 7],
+      d: [10, 7, 12]
     };
-    expect(countIfHasValue(obj, 5)).toEqual(1);
-    expect(countIfHasValue(obj, 1)).toEqual(1);
-    expect(countIfHasValue(obj, 7)).toEqual(1);
-    expect(countIfHasValue(obj, 10)).toEqual(1);
-    expect(countIfHasValue(obj, 13)).toEqual(0);
+    expect(countIfHasValue(obj, 1)).toEqual(2)
+    expect(countIfHasValue(obj, 7)).toEqual(3)
+    expect(countIfHasValue(obj, 10)).toEqual(2)
+    expect(countIfHasValue(obj, 13)).toEqual(0)
   });
 })
 
 
 describe("countValidNumsInString", function () {
-  it("should return 0 for an empty string", function () {
-    expect(countValidNumsInString("")).toEqual(0);
-  });
-  it("should return 1 for '1'", function () {
-    expect(countValidNumsInString("1")).toEqual(1);
-  });
-  it("should return 2 for '1,2'", function () {
-    expect(countValidNumsInString("1,2")).toEqual(2);
-  });
-  it("should return 3 for '1,2,3'", function () {
-    expect(countValidNumsInString("1,2,3")).toEqual(3);
-  });
-  it("should return 4 for '1,2,3,4'", function () {
-    expect(countValidNumsInString("1,2,3,4")).toEqual(4);
-  });
-  it("should return 5 for '1,2,3,4,5'", function () {
-    expect(countValidNumsInString("1,2,3,4,5")).toEqual(5);
-  });
-  it("should return 6 for '1,2,3,4,5,6'", function () {
-    expect(countValidNumsInString("1,2,3,4,5,6")).toEqual(6);
+  it("should return what the examples return", function () {
+    expect(countValidNumsInString("")).toEqual(0)
+    expect(countValidNumsInString("1")).toEqual(1)
+    expect(countValidNumsInString("12")).toEqual(2)
+    expect(countValidNumsInString("12abc3")).toEqual(3)
+    expect(countValidNumsInString("1s2d3dsadas4")).toEqual(4)
+    expect(countValidNumsInString("512,3,4!?!")).toEqual(5)
+    expect(countValidNumsInString("123456")).toEqual(6)
   });
 });
 
@@ -213,6 +217,22 @@ describe("collectOddsAndEvens", function () {
 });
 
 describe("calculateMonthlyOrders", function () {
+  it("should return the total of all orders", function(){
+    const orders = [
+      {
+        Feburary: 1,
+        March: 2,
+        April: 2
+      },
+      {
+        April: 1,
+        May: 2,
+        June: 2
+      }
+    ]
+    expect(calculateMonthlyOrders(orders)).toEqual(10);
+  })
+
   it("should return the total of all the orders", function () {
     const orders = [
       {
@@ -246,6 +266,7 @@ describe("calculateMonthlyOrders", function () {
     ];
 
     expect(calculateMonthlyOrders(orders)).toEqual(16800);
+
   });
 });
 
@@ -254,21 +275,37 @@ describe("divideObject", function () {
   it("divides an object", function(){
     expect(
       divideObject({
-        a: "Apple",
-        b: "Banana",
-        c: "Cantaloupe",
-        e: 2,
-        another: "fun",
-        x: 10,
+        first: "hi",
+        second: "hello",
+        third: "hey",
+        fourth: 2,
+        fifth: "fun",
+        sixth: 10,
       })
-    ).toEqual([10, 2, "Apple", "Banana", "Cantaloupe", "fun"]);
+    ).toEqual([[12], [13]]);
   })
 });
 
 
 describe("findHighestPriorityTodo", function () {
   it("should return the highest priority task and priority", function () {
-    const todos = [
+
+    let todos = [{
+      task: "Eat",
+      priority: 18,
+    },
+    {
+      task: "Sleep",
+      priority: 22,
+    },
+    {
+      task: "Solve problems",
+      priority: 17,
+    }];
+
+    expect(findHighestPriorityTodo(todos)).toEqual(["Sleep", 22])
+
+    let todos2 = [
       {
         task: "Task 1",
         priority: 1,
@@ -282,8 +319,7 @@ describe("findHighestPriorityTodo", function () {
         priority: 3,
       },
     ];
-    const result = findHighestPriorityTodo(todos);
-    expect(result).toEqual(["Task 3", 3]);
+    expect(findHighestPriorityTodo(todos2)).toEqual(["Task 3", 3]);
   });
 });
 

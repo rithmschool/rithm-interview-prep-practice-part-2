@@ -6,7 +6,7 @@ function skipVowels(string) {
   let result = [];
   for (let i = 0; i < string.length; i++) {
     if (vowels.includes(string[i])) {
-      i += 2;
+      i++;
     } else {
       result.push(string[i]);
     }

@@ -38,7 +38,21 @@ The function should return the total value for each property in each object.
 Examples:
 
 ```js
-const orders = [{
+
+let orders = [{
+  Feburary: 1,
+  March: 2,
+  April: 2
+},
+{
+  April: 1,
+  May: 2,
+  June: 2
+}]
+
+calculateMonthlyOrders(orders) // 10;
+
+let orders = [{
   January: 100,
   February: 200,
   March: 300,
@@ -78,7 +92,6 @@ Examples:
 
 ```js
 collectOddsAndEvens([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
 // { odd: 5, even: 4, });
 
 collectOddsAndEvens([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -105,20 +118,19 @@ collectOddsAndEvens([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
 
 ### countIfHasValue
 
-Write a function called `countIfHasValue` which accepts an object where all of the values are arrays. The function should count the number of times the value is found in any of the arrays.
+Write a function called `countIfHasValue` which accepts an object where all of the values are arrays. The function should count the number of times the value exists  in any of the arrays.
 
 Examples:
 
 ```js
-const obj = {
-  a: [1, 2, 3],
-  b: [4, 5, 6],
-  c: [7, 8, 9],
-  d: [10, 11, 12]
+let obj = {
+  a: [1, 10, 3],
+  b: [4, 1, 7],
+  c: [7, 7, 7],
+  d: [10, 7, 12]
 };
-countIfHasValue(obj, 5) // 1
-countIfHasValue(obj, 1) // 1
-countIfHasValue(obj, 7) // 1
+countIfHasValue(obj, 1) // 2
+countIfHasValue(obj, 7) // 4
 countIfHasValue(obj, 10 // 1
 countIfHasValue(obj, 13 // 0
 ```
@@ -130,31 +142,31 @@ Write a function called `countValidNumsInString` which counts the number of vali
 Examples:
 
 ```js
-  countValidNumsInString("") // 0
-  countValidNumsInString("1") // 1
-  countValidNumsInString("1,2") // 2
-  countValidNumsInString("1,2,3") // 3
-  countValidNumsInString("1,2,3,4") // 4
-  countValidNumsInString("1,2,3,4,5") // 5
-  countValidNumsInString("1,2,3,4,5,6") // 6
+countValidNumsInString("") // 0
+countValidNumsInString("1") // 1
+countValidNumsInString("12") // 2
+countValidNumsInString("12abc3") // 3
+countValidNumsInString("1s2d3dsadas4") // 4
+countValidNumsInString("512,3,4!?!") // 5
+countValidNumsInString("123456") // 6
 ```
 
 ### divideObject
 
-Write a function called `divideObject` that accepts an object where the values are either strings or numbers. The function should return an array. If the value is a number, add it to the beginning of the array, if it is a string, add it to the end of the array. The function should return a new array.
+Write a function called `divideObject` that accepts an object where the values are either strings or numbers. The function should return an array of arrays. The first subarray should contain a total of all of the numbers and the second subarray should contain a number which is the total of all the characters of all the strings.
 
 Examples:
 
 ```js
 divideObject({
-  a: "Apple",
-  b: "Banana",
-  c: "Cantaloupe",
-  e: 2,
-  another: "fun",
-  x: 10,
+  first: "hi",
+  second: "hello",
+  third: "hey",
+  fourth: 2,
+  fifth: "fun",
+  sixth: 10,
 })
-// [10, 2, "Apple", "Banana", "Cantaloupe", "fun"]
+// [ [12], [13] ]
 ```
 
 ### findFirstAndLastIndex
@@ -178,27 +190,13 @@ Examples:
 ```js
 let moves = [
   ["a", "b", "c"],
-  ["d", "e", "f"],
-  ["g", "h", "i"],
+  ["d", "a", "f"],
+  ["g", "h", "h"],
 ];
-let move = "a";
-findFirstMove(moves, move); // [0, 0]);
 
-let moves = [
-  ["a", "b", "c"],
-  ["d", "e", "f"],
-  ["g", "h", "i"],
-];
-let move = "h";
-findFirstMove(moves, move); // [2, 1]);
-
-let moves = [
-  ["a", "b", "c"],
-  ["d", "e", "f"],
-  ["g", "h", "i"],
-];
-let move = "z";
-findFirstMove(moves, move); // -1);
+findFirstMove(moves, "a"); // [0, 0]);
+findFirstMove(moves, "h"); // [2, 1]);
+findFirstMove(moves, "z"); // -1);
 ```
 
 ### findHighestPriorityTodo
@@ -208,8 +206,23 @@ Write a function called `findHighestPriorityTodo` which accepts an array of obje
 Examples:
 
 ```js
-let todos = [
+
+let todos = [{
+  task: "Eat",
+  priority: 18,
+},
 {
+  task: "Sleep",
+  priority: 22,
+},
+{
+  task: "Solve problems",
+  priority: 17,
+}];
+
+findHighestPriorityTodo(todos); // ["Sleep", 22]
+
+let todos = [{
   task: "Task 1",
   priority: 1,
 },
@@ -220,8 +233,8 @@ let todos = [
 {
   task: "Task 3",
   priority: 3,
-},
-];
+}];
+
 findHighestPriorityTodo(todos); // ["Task 3", 3]
 ```
 
@@ -238,11 +251,7 @@ let matrix = [
   [7, 8, 9],
 ];
 inMatrix(matrix, 5) // true
-let matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
+inMatrix(matrix, 8) // true
 inMatrix(matrix, 10) // false
 ```
 
@@ -255,16 +264,24 @@ Examples:
 ```js
 replaceAfter(["1", "2", "a", "b", "3", "4"], 2)
 // ["1", "2", "Hello", "world", "3", "4"]
+
+replaceAfter(["a", "b", "c"], 0)
+// ["Hello", "world", "c"]
 ```
 
 ### reverseValues
 
-Write a function called `reverseValues`, which accepts an array of numbers and return a new array with the values reversed. If a value is an even number, skip the next two numbers and continue.
+Write a function called `reverseValues`, which accepts an array of numbers and return a new array with the values reversed. If a value is an even number, do not add the current number, skip the next two numbers and continue.
 
 Examples:
 
 ```js
 reverseValues([1, 1, 3, 3, 2]) // [1, 1]
+reverseValues([1, 3, 5, 7]) // [7, 5, 3, 1]
+reverseValues([1, 3, 4, 7]) // [7]
+reverseValues([11, 13, 15, 20, 1, 1]) // [1, 1, 11]
+reverseValues([4, 5, 1, 1, 2, 1, 1]) // [1, 1, 5]
+reverseValues([2, 2, 2]) // []
 ```
 
 ### robotInstructions
@@ -357,14 +374,24 @@ separateLanguages(["python", "python", "spanish", "javascript"])
   other: ["spanish"],
 }
 */
+separateLanguages(["greek", "french", "yoruba", "python"])
+/*
+{
+  python: 1,
+  javascript: 0,
+  other: ["greek", "french", "yoruba"],
+}
+*/
 ```
 
 ### skipVowels
 
-Write a function called `skipVowels` that accepts a string an returns an array. The function should iterate through the string and if it encouters a vowel it should skip the next two characters, otherwise it should add that current character to the array.
+Write a function called `skipVowels` that accepts a string an returns an array. The function should iterate through the string and if it encouters a vowel it should skip the current character and the next character, otherwise it should add that current character to the array.
 
 Examples:
 
 ```js
-skipVowels("hello") // ["h"]
+skipVowels("hello") // ["h", "l"]
+skipVowels("much fun") // ["m", "h", " ", "f"]
+skipVowels("aaaa") // []
 ```
