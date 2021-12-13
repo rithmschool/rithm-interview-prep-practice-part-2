@@ -4,8 +4,8 @@ function collectOddsAndEvens(numbers) {
    */
   let odd = 0;
   let even = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] % 2 === 0) {
+  for (let number of numbers) {
+    if (number % 2 === 0) {
       even++;
     } else {
       odd++;

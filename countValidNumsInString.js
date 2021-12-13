@@ -3,8 +3,8 @@ function countValidNumsInString(string) {
    * This function counts the number of valid numbers in a string.
    */
   let count = 0;
-  for (let i = 0; i < string.length; i++) {
-    if (isValidNum(string[i])) {
+  for (let char of string) {
+    if (isValidNum(char)) {
       count++;
     }
   }
