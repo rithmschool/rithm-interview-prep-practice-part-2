@@ -319,3 +319,15 @@ describe("findFirstMove", function () {
     expect(result).toEqual(-1);
   });
 });
+
+describe("findFirstAndLastIndex", function () {
+  it("should return -1 if the number does not exist at least twice", function () {
+    expect(findFirstAndLastIndex([1, 2, 3, 4, 5], 3)).toEqual(-1);
+  })
+  it("should return -1 if the number does not exist", function () {
+    expect(findFirstAndLastIndex([1, 2, 2, 2, 5], 12)).toEqual(-1);
+  })
+  it("should return the first and last index of the number", function () {
+    expect(findFirstAndLastIndex([1, 2, 2, 2, 5], 2)).toEqual([1, 3]);
+  })
+})
