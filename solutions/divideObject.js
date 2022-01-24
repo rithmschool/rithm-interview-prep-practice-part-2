@@ -1,7 +1,11 @@
 function divideObject(obj) {
-  /**
-* Write a function that accepts an object where the values are either strings or numbers. The function should return an array. If the value is a number, add it to the beginning of the array, if it is a string, add it to the end of the array. The function should return a new array.
-*/
+/**
+ * This function accepts an object where the values are either strings or numbers,
+ * and returns an array of arrays. The first subarray contains a total of all of 
+ * the numbers and the second subarray contains a number which is the total 
+ * of all the characters of all the strings.
+ */
+
   let sumNumbers = 0;
   let sumStrings = 0;
   for (let key in obj) {
