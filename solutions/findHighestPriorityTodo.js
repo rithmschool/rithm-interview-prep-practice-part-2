@@ -1,6 +1,9 @@
 function findHighestPriorityTodo(todos) {
   /**
-   * This function should accept an array of objects, each of which has a 'priority' property as well as a 'task' property. The function should return a array where the first index is the task and the second index is the priority.
+   * This function accepts an array of objects, each of which has a 'priority' 
+   * property as well as a 'task' property. The function returns an array 
+   * where the first index is the name of the highest priority task and the 
+   * second index is the priority rating of that same task.
    */
 
   let highestPriority = 0;

@@ -1,12 +1,14 @@
-### Preparing for the Rithm School Timed Coding Challenge
+### Preparing for the Rithm School Interview
 
-Congratulations on making it past the timed coding challenge! It's time to practice a bit with some more problems to make sure you're ready to continue learning more.
+Great job getting through the first set of problems! It's time to practice a bit with some slightly more challenging problems to make sure you're ready for our technical interview.
 
 To best prepare for the final stage of the Rithm School interview, make sure that you can solve each of these functions. You can also download a zip file with all of these functions and an HTML file that you can open to run automated tests to ensure you have solved the problem correctly.
 
 [Download a zip file containing tests and practice problems here](https://github.com/rithmschool/rithm-interview-prep-practice-part-2/archive/refs/heads/main.zip)
 
 ### Running the tests for each practice problem
+
+The steps to run the tests are **exactly the same** as the previous section.
 
 Once you download the zip file containing the tests and practice problems, unzip the file and take a look at the contents of the folder. You will see that there is a JavaScript file for each problem that you need to solve.
 
@@ -32,15 +34,14 @@ Before continuing to the list of problems, it's essential you develop some good 
 
 ### calculateMonthlyOrders
 
-Write a function called `calculateMonthlyOrders` that accepts an array of objects. Each object has a property for a month in the year and a value which is a number
-The function should return the total value for each property in each object.
+Write a function called `calculateMonthlyOrders` that accepts an array of objects. Each object has one or more properties for months in the year and those properties each have a value which is a number. The function should return the sum of all the values of all the properties in all the objects.
 
 Examples:
 
 ```js
 
 let orders = [{
-  Feburary: 1,
+  February: 1,
   March: 2,
   April: 2
 },
@@ -118,7 +119,7 @@ collectOddsAndEvens([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
 
 ### countIfHasValue
 
-Write a function called `countIfHasValue` which accepts an object where all of the values are arrays. The function should count the number of times the value exists  in any of the arrays.
+Write a function called `countIfHasValue` which accepts an object where all of the values are arrays. It also accepts a numeric value that is being searched for. The function should return the number of arrays in which the searched-for value appears.
 
 Examples:
 
@@ -130,7 +131,7 @@ let obj = {
   d: [10, 7, 12]
 };
 countIfHasValue(obj, 1) // 2
-countIfHasValue(obj, 7) // 4
+countIfHasValue(obj, 7) // 3
 countIfHasValue(obj, 10 // 1
 countIfHasValue(obj, 13 // 0
 ```
@@ -171,7 +172,7 @@ divideObject({
 
 ### findFirstAndLastIndex
 
-Write a function called `findFirstAndLastIndex` that should accept an array and a number and return a new array with the first index is the index where that number is **first** found and the second index is the index where that number is **last** found. If the number does not exist at least twice, the function should return `-1`
+Write a function called `findFirstAndLastIndex` that should accept an array and a number and return a new array where the first index is the index where that number is **first** found and the second index is the index where that number is **last** found. If the number does not exist at least twice, the function should return `-1`
 
 Examples:
 
@@ -183,7 +184,7 @@ findFirstAndLastIndex([1, 2, 2, 2, 5], 2) // [1, 3]
 
 ### findFirstMove
 
-Write a function called `findFirstMove`. This function accepts an array of arrays of moves and a move. It should return an array with the index of the first move in the array of arrays of moves.
+Write a function called `findFirstMove`. This function accepts an array of arrays of moves and a move. It should return an array with the index of the first move in the array of arrays of moves. If the move is not present in the moves array, the function should return -1.
 
 Examples:
 
@@ -194,14 +195,14 @@ let moves = [
   ["g", "h", "h"],
 ];
 
-findFirstMove(moves, "a"); // [0, 0]);
-findFirstMove(moves, "h"); // [2, 1]);
-findFirstMove(moves, "z"); // -1);
+findFirstMove(moves, "a"); // [0, 0]
+findFirstMove(moves, "h"); // [2, 1]
+findFirstMove(moves, "z"); // -1
 ```
 
 ### findHighestPriorityTodo
 
-Write a function called `findHighestPriorityTodo` which accepts an array of objects, each of which has a 'priority' property as well as a 'task' property. The function should return a array where the first index is the task and the second index is the priority.
+Write a function called `findHighestPriorityTodo` which accepts an array of objects, each of which has a 'priority' property as well as a 'task' property. The function should return an array where the first index is the name of the highest priority task and the second index is the priority rating of that same task.
 
 Examples:
 
@@ -240,7 +241,7 @@ findHighestPriorityTodo(todos); // ["Task 3", 3]
 
 ### inMatrix
 
-Write a function called `inMatrix` which accepts an array of arrays and a value. The function should return `true` if that value is in the matrix.
+Write a function called `inMatrix` which accepts an array of arrays and a value. The function should return `true` if that value is in the matrix, and `false` if it is not.
 
 Examples:
 
@@ -252,12 +253,12 @@ let matrix = [
 ];
 inMatrix(matrix, 5) // true
 inMatrix(matrix, 8) // true
-inMatrix(matrix, 10) // **false**
+inMatrix(matrix, 10) // false
 ```
 
 ### replaceAfter
 
-Write a function called `replaceAfter` that accepts an array an index and it removes two elements starting at that index and adds the strings "Hello", "world" instead. The function should return the array
+Write a function called `replaceAfter` that accepts an array and an index. It should remove two elements starting at that index and add the strings "Hello", "world" in their places. The function should return the altered array.
 
 Examples:
 
@@ -271,22 +272,22 @@ replaceAfter(["a", "b", "c"], 0)
 
 ### reverseValues
 
-Write a function called `reverseValues`, which accepts an array of numbers and return a new array with the values reversed. If a value is an even number, do not add the current number, skip the next two numbers and continue.
+Write a function called `reverseValues`, which accepts an array of numbers, and iterates through it. As it traverses the array, if the value encountered is an even number, skip it AND skip the next two numbers, as well. Anything that isn't skipped should be added to a new array, which has all non-skipped numbers in reverse order of the original array.  Return this new array.
 
 Examples:
 
 ```js
-reverseValues([1, 1, 3, 3, 2]) // [1, 1]
+reverseValues([1, 1, 3, 3, 2]) // [3, 3, 1, 1]
 reverseValues([1, 3, 5, 7]) // [7, 5, 3, 1]
-reverseValues([1, 3, 4, 7]) // [7]
-reverseValues([11, 13, 15, 20, 1, 1]) // [1, 1, 11]
-reverseValues([4, 5, 1, 1, 2, 1, 1]) // [1, 1, 5]
+reverseValues([1, 3, 4, 7]) // [3, 1]
+reverseValues([11, 13, 15, 20, 1, 1]) // [15, 13, 11]
+reverseValues([4, 5, 1, 1, 2, 1, 1]) // [1]
 reverseValues([2, 2, 2]) // []
 ```
 
 ### robotInstructions
 
-Write a function called `robotInstructions` which accepts an array of moves, the options for the moves are "U", "D", "L", "R", the function should return an object with each move and the total number of times each move appears.
+Write a function called `robotInstructions` which accepts an array of moves. The options for the moves are "U", "D", "L", "R". The function should return an object with one key for each move with their values being the total number of times each move appears.
 
 Examples:
 
@@ -302,7 +303,7 @@ robotInstructions(
 
 ### scheduleCheck
 
-Write a function called `scheduleCheck` which accepts two objects which have a key for each day of the week and a value that is either true or false, the function should return the number of days of the week that each object both has a value of true for.
+Write a function called `scheduleCheck` which accepts two objects which have a key for each day of the week and a value that is either true or false. The function should return the number of days of the week that both objects have a value of true for.
 
 Examples:
 
@@ -352,7 +353,7 @@ scheduleCheck(schedule1, schedule2) // 6;
 
 ### separateLanguages
 
-Write a function called `separateLanguages` which which takes an array of strings and returns an object with the following keys, "python", "javascript", "other". The values for the keys of "python" and "javascript" should be the number of times those strings appear. The value of "other" should be an array of all of the other values in the array.
+Write a function called `separateLanguages` which which takes an array of strings and returns an object with the following keys: "python", "javascript", "other". The values for the keys of "python" and "javascript" should be the number of times those strings appear. The value of "other" should be an array of all of the other values in the array.
 
 Examples:
 
@@ -386,7 +387,7 @@ separateLanguages(["greek", "french", "yoruba", "python"])
 
 ### skipVowels
 
-Write a function called `skipVowels` that accepts a string an returns an array. The function should iterate through the string and if it encouters a vowel it should skip the current character and the next character, otherwise it should add that current character to the array.
+Write a function called `skipVowels` that accepts a string an returns an array. The function should iterate through the string and if it encounters a vowel, it should skip the current character and the next character. Otherwise, it should add that current character to the array.
 
 Examples:
 
