@@ -109,11 +109,11 @@ describe("robotInstructions", function () {
 
 describe("reverseValues", function(){
   it("reverses values", function(){
-    expect(reverseValues([1, 1, 3, 3, 2])).toEqual([1, 1])
+    expect(reverseValues([1, 1, 3, 3, 2])).toEqual([3, 3, 1, 1])
     expect(reverseValues([1, 3, 5, 7])).toEqual([7, 5, 3, 1])
-    expect(reverseValues([1, 3, 4, 7])).toEqual([7])
-    expect(reverseValues([11, 13, 15, 20, 1, 1])).toEqual([1, 1, 11])
-    expect(reverseValues([4, 5, 1, 1, 2, 1, 1])).toEqual([1, 1, 5])
+    expect(reverseValues([1, 3, 4, 7])).toEqual([3, 1])
+    expect(reverseValues([11, 13, 15, 20, 1, 1])).toEqual([15, 13, 11])
+    expect(reverseValues([4, 5, 1, 1, 2, 1, 1])).toEqual([1])
     expect(reverseValues([2, 2, 2])).toEqual([])
   })
 })
